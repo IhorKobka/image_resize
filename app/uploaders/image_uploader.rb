@@ -14,8 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def resize_image
-    dimensions = model.requested_dimensions
-    resize_to_fit(dimensions[:width], dimensions[:height])
+    resize_to_fit(model.resize_width, model.resize_height)
   end
 
   def store_dimensions

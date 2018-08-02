@@ -17,10 +17,10 @@ module ExceptionHandler
   end
 
   def unprocessable_entity(e)
-    json_response({ message: e.message }, status: :unprocessable_entity)
+    json_response(e.record.errors, status: :unprocessable_entity)
   end
 
   def not_found(e)
-    json_response({ message: e.message }, status: :not_found)
+    json_response({ message: "#{e.klass.to_s.pluralize(e.params.length)} not found" }, status: :not_found)
   end
 end
