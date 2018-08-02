@@ -7,6 +7,8 @@ class Image
   field :current_dimensions, type: Hash, default: { width: nil, height: nil }
   field :image
 
+  embedded_in :user
+
   validate :dimensions_validate
 
   private
